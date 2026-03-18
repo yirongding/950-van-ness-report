@@ -26,6 +26,7 @@
     }
     .page { max-width: 1380px; margin: 0 auto; padding: 28px; }
     .hero {
+      position: relative;
       background: linear-gradient(135deg, var(--brand) 0%, #234a86 45%, #2e6bc0 100%);
       color: white; border-radius: 26px; padding: 34px 36px; box-shadow: var(--shadow); margin-bottom: 24px;
     }
@@ -34,6 +35,23 @@
     .hero p { margin: 0; max-width: 950px; line-height: 1.6; color: rgba(255,255,255,.92); }
     .meta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
     .pill { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.16); border-radius: 999px; padding: 8px 12px; font-size: 13px; }
+    .lang-switch {
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.18);
+      color: white;
+      text-decoration: none;
+      font-size: 13px;
+      backdrop-filter: blur(4px);
+    }
+    .lang-switch:hover { background: rgba(255,255,255,.18); }
     .layout { display: grid; grid-template-columns: 300px minmax(0,1fr); gap: 22px; align-items: start; }
     .sidebar { position: sticky; top: 18px; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 16px; }
     .sidebar h3 { margin: 6px 8px 12px; font-size: 14px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
@@ -73,7 +91,8 @@
     }
     @media (max-width: 680px) {
       .page { padding: 16px; }
-      .hero { padding: 24px 20px; }
+      .hero { padding: 64px 20px 24px; }
+      .lang-switch { top: 16px; right: 16px; }
       h1 { font-size: 30px; }
       .cards { grid-template-columns: 1fr; }
       .panel { padding: 18px; }
@@ -83,6 +102,7 @@
 <body>
   <div class="page">
     <section class="hero">
+      <a class="lang-switch" href="https://yirongding.github.io/950-van-ness-report/" target="_self">English</a>
       <div class="eyebrow">住宅重建定位研究报告</div>
       <h1>950 Van Ness Ave, San Francisco, CA 94109</h1>
       <p>本报告旨在将 950 Van Ness 定位为一个具备说服力的住宅重建机会：不仅从地块本身出发，也结合周边子市场与旧金山整体多户住宅市场数据、社区配套以及清晰的投资叙事，来强化其区位价值。</p>
