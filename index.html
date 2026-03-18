@@ -264,6 +264,9 @@
       .layout { grid-template-columns: 1fr; }
       .sidebar { position: static; }
       .mobile-nav-toggle { display: block; }
+      .sidebar-title {
+        display: none;
+      }
       .tablist {
         display: none;
       }
@@ -299,7 +302,7 @@
     <div class="layout">
       <aside class="sidebar" id="mobileSidebar">
         <button class="mobile-nav-toggle" id="mobileNavToggle">Sections <span id="mobileNavLabel">Show</span></button>
-        <h3>Sections</h3>
+        <h3 class="sidebar-title">Sections</h3>
         <div class="tablist">
           <button class="tab-btn active" data-tab="overview">Overview</button>
           <button class="tab-btn" data-tab="property">Property positioning</button>
