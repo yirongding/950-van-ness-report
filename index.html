@@ -182,6 +182,9 @@
       gap: 12px;
       margin: 16px 0 20px;
     }
+    .property-facts {
+      grid-template-columns: repeat(3, minmax(0,1fr));
+    }
     .card {
       background: #fafcff;
       border: 1px solid var(--line);
@@ -349,6 +352,7 @@
         margin-top: 8px;
       }
       .cards { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .property-facts { grid-template-columns: repeat(2, minmax(0,1fr)); }
       .image-grid { grid-template-columns: 1fr; }
       .image-pair { grid-template-columns: 1fr; }
       .image-pair img { height: 220px; }
@@ -359,6 +363,7 @@
       .hero { padding: 24px 20px; }
       h1 { font-size: 30px; }
       .cards { grid-template-columns: 1fr; }
+      .property-facts { grid-template-columns: 1fr; }
       .panel { padding: 18px; }
     }
   </style>
@@ -440,7 +445,7 @@
               </ul>
             </div>
           </div>
-          <div class="cards">
+          <div class="cards property-facts">
             <div class="card"><div class="k">GLA</div><div class="v">44,000 SF</div><div class="s">Two-story auto showroom (built 1919).</div></div>
             <div class="card"><div class="k">Lot size</div><div class="v">0.37 acres</div><div class="s">16,122 SF corner parcel; FAR 2.73 today.</div></div>
             <div class="card"><div class="k">Zoning</div><div class="v">RC-4</div><div class="s">High-density residential with ground-floor commercial.</div></div>
