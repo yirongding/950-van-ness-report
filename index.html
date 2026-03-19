@@ -61,6 +61,17 @@
       flex-wrap: wrap;
       margin-top: 18px;
     }
+    .disclaimer {
+      margin: 0 0 22px;
+      background: #fffdf7;
+      border: 1px solid #efe1b3;
+      border-radius: 16px;
+      padding: 16px 18px;
+      box-shadow: var(--shadow);
+    }
+    .disclaimer strong {
+      color: #8a5a00;
+    }
     .pill {
       background: rgba(255,255,255,.12);
       border: 1px solid rgba(255,255,255,.16);
@@ -234,6 +245,31 @@
       border-radius: 18px;
       padding: 12px;
     }
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 14px;
+      margin: 18px 0 20px;
+    }
+    .image-card {
+      background: #fbfcfe;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+    .image-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      background: #eef2f8;
+    }
+    .image-card .cap {
+      padding: 12px 14px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
     .figure img {
       display: block;
       width: 100%;
@@ -275,6 +311,7 @@
         margin-top: 8px;
       }
       .cards { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .image-grid { grid-template-columns: 1fr; }
       .two-col { grid-template-columns: 1fr; }
     }
     @media (max-width: 680px) {
@@ -293,11 +330,12 @@
       <h1>950 Van Ness Ave, San Francisco, CA 94109</h1>
       <p>Positioning 950 Van Ness as a compelling residential redevelopment opportunity by pairing the site story with submarket and metro-level multifamily data, neighborhood amenities, and a clear buyer-facing narrative.</p>
       <div class="meta">
-        <div class="pill">Prepared for Alina</div>
         <div class="pill">Date: 2026-03-18</div>
-        <div class="pill">Format: Interactive HTML report</div>
+        <div class="pill">Format: Interactive investor report</div>
       </div>
     </section>
+
+    <div class="disclaimer"><strong>Data & disclaimer:</strong> This website is an illustrative investor-facing positioning tool for discussion purposes only. It is not investment, legal, zoning, tax, valuation, or underwriting advice. Market and submarket metrics are based primarily on client-provided CoStar Group reports, supplemented by public sources for neighborhood, transit, and amenity context. Distances shown are approximate and based on map data from 950 Van Ness Ave.</div>
 
     <div class="layout">
       <aside class="sidebar" id="mobileSidebar">
@@ -306,16 +344,14 @@
         <div class="tablist">
           <button class="tab-btn active" data-tab="overview">Overview</button>
           <button class="tab-btn" data-tab="property">Property positioning</button>
+          <button class="tab-btn" data-tab="risks">Risks</button>
           <button class="tab-btn" data-tab="why">Why this location works</button>
           <button class="tab-btn" data-tab="demographics">Demographics</button>
           <button class="tab-btn" data-tab="submarket">Submarket data</button>
           <button class="tab-btn" data-tab="metro">San Francisco market</button>
-          <button class="tab-btn" data-tab="resident">Target residents</button>
-          <button class="tab-btn" data-tab="amenities">Amenities</button>
-          <button class="tab-btn" data-tab="housing">Housing context</button>
-          <button class="tab-btn" data-tab="corridor">Corridor story</button>
-          <button class="tab-btn" data-tab="message">Buyer message</button>
-          <button class="tab-btn" data-tab="risks">Risks</button>
+          <button class="tab-btn" data-tab="resident">Target demand profile</button>
+          <button class="tab-btn" data-tab="amenities">Amenities & distances</button>
+          <button class="tab-btn" data-tab="positioning">Residential precedent & investor positioning</button>
           <button class="tab-btn" data-tab="sources">Methodology & sources</button>
         </div>
       </aside>
@@ -369,12 +405,12 @@
           <h3>Centrality</h3>
           <p>Van Ness is one of the city’s main north-south corridors. From 950 Van Ness, residents can reach Downtown, Civic Center, Hayes Valley, Polk Street, Nob Hill, and Japantown with relative ease. That kind of access is one of the clearest reasons housing works here.</p>
           <h3>Transit access</h3>
-          <p>Van Ness is no longer just a wide arterial. According to SFMTA, the Van Ness BRT project introduced dedicated center-running transit lanes and improved performance, with bus travel up to 36% faster, 45% more reliable, and injury collisions down by 50%.</p>
+          <p>950 Van Ness benefits from strong regional and city transit connectivity. The property sits on one of San Francisco’s main north-south corridors, with convenient access to Muni service, downtown transit connections, and BART via the Powell Street station area. In addition, corridor transit improvements along Van Ness have improved reliability, travel times, and pedestrian safety.</p>
           <ul>
-            <li>Direct service on the Van Ness BRT / Rapid Network corridor</li>
-            <li>Connections south to Market Street transit and regional job access</li>
-            <li>Improved safety and pedestrian conditions</li>
-            <li>Stronger long-term support for dense residential use</li>
+            <li>Approx. 0.71 miles to Powell Street BART</li>
+            <li>Strong north-south transit access along Van Ness</li>
+            <li>Convenient connections south to Market Street and regional job centers</li>
+            <li>Improved safety and walkability along the corridor</li>
           </ul>
           <h3>Institutional strength</h3>
           <p>The corridor benefits from major civic, healthcare, and educational anchors that support daily activity and residential demand. This is not just a future story. The surrounding institutions already generate steady foot traffic and make the location easier to justify as housing.</p>
@@ -452,7 +488,7 @@
         </section>
 
         <section class="panel" id="resident">
-          <h2 class="section-title">Who would want to live here?</h2>
+          <h2 class="section-title">Target demand profile</h2>
           <ul>
             <li>Young professionals who want central access without depending on a car</li>
             <li>Medical professionals and healthcare staff given proximity to CPMC and related medical offices</li>
@@ -465,7 +501,15 @@
         </section>
 
         <section class="panel" id="amenities">
-          <h2 class="section-title">Education, healthcare, faith, and daily-life amenities</h2>
+          <h2 class="section-title">Amenities & distances</h2>
+          <div class="cards">
+            <div class="card"><div class="k">CPMC Van Ness Campus</div><div class="v">0.15 mi</div><div class="s">Approx. 248 meters from 950 Van Ness.</div></div>
+            <div class="card"><div class="k">Opera Plaza</div><div class="v">0.17 mi</div><div class="s">Approx. 268 meters from the site.</div></div>
+            <div class="card"><div class="k">Trader Joe's</div><div class="v">0.48 mi</div><div class="s">Approx. 776 meters away.</div></div>
+            <div class="card"><div class="k">Japan Center</div><div class="v">0.54 mi</div><div class="s">Approx. 872 meters away.</div></div>
+            <div class="card"><div class="k">Whole Foods Market</div><div class="v">0.44 mi</div><div class="s">Approx. 704 meters away.</div></div>
+            <div class="card"><div class="k">Civic Center</div><div class="v">0.46 mi</div><div class="s">Approx. 740 meters to the Civic Center area.</div></div>
+          </div>
           <div class="two-col">
             <div class="mini">
               <h4>Schools / education</h4>
@@ -513,31 +557,27 @@
           </div>
         </section>
 
-        <section class="panel" id="housing">
-          <h2 class="section-title">Housing / residential context</h2>
-          <p>The strongest argument for residential redevelopment is simple: the corridor already works as a residential address.</p>
+        <section class="panel" id="positioning">
+          <h2 class="section-title">Residential precedent & investor positioning</h2>
+          <p>The strongest argument for residential redevelopment is simple: this corridor already works as a residential address. Investors are not being asked to create demand from scratch. They are stepping into a location where the residential case has already been validated by surrounding product, public investment, and ongoing neighborhood evolution.</p>
+          <div class="image-grid">
+            <div class="image-card"><img src="100-van-ness.jpg" alt="100 Van Ness" /><div class="cap"><strong>100 Van Ness</strong><br/>A widely cited adaptive-reuse success story that converted a former office tower into apartments.</div></div>
+            <div class="image-card"><img src="150-van-ness.jpg" alt="150 Van Ness" /><div class="cap"><strong>150 Van Ness</strong><br/>Contemporary multifamily product reinforcing the corridor’s appeal as a residential address.</div></div>
+            <div class="image-card"><img src="opera-plaza.jpg" alt="Opera Plaza" /><div class="cap"><strong>Opera Plaza</strong><br/>Longstanding mixed-use and residential presence that supports the district’s established housing identity.</div></div>
+          </div>
           <ul>
-            <li><strong>100 Van Ness</strong> is a major adaptive-reuse success story that converted a former office building into apartments.</li>
-            <li><strong>150 Van Ness</strong> reinforces the corridor’s appeal as a contemporary multifamily address.</li>
-            <li><strong>Opera Plaza</strong> and nearby multifamily product show longstanding acceptance of residential living in the district.</li>
+            <li><strong>100 Van Ness</strong> shows the market’s acceptance of residential conversion and repositioning in this broader corridor.</li>
+            <li><strong>150 Van Ness</strong> confirms current multifamily demand for well-located Van Ness product.</li>
+            <li><strong>Opera Plaza</strong> demonstrates that the area has supported residential, retail, and cultural activity for decades.</li>
           </ul>
-          <p>The buyer is not being asked to create a residential node from scratch. The residential base is already there. The opportunity is to replace an outdated land use with one that fits the corridor better today.</p>
-        </section>
-
-        <section class="panel" id="corridor">
-          <h2 class="section-title">Corridor story</h2>
-          <p>This is where the location gets easier to sell. Van Ness has long been wide, prominent, and in places overly car-oriented, but city policy and public investment have been pushing the corridor in a different direction: safer streets, better transit, a stronger mixed-use identity, and a more housing-friendly pattern of development.</p>
+          <p>Van Ness has long been wide, prominent, and in places overly car-oriented, but city policy and public investment have been pushing the corridor in a different direction: safer streets, better transit, a stronger mixed-use identity, and a more housing-friendly pattern of development.</p>
           <ul>
             <li>The San Francisco General Plan frames Van Ness as a major mixed-use boulevard and transit corridor.</li>
-            <li>The BRT investment is visible public-sector commitment.</li>
-            <li>Nearby adaptive-reuse and apartment projects show the market has already been moving residential.</li>
-            <li>Legacy automotive uses increasingly feel underutilized relative to corridor value.</li>
+            <li>Public investment along the corridor signals long-term institutional support.</li>
+            <li>Nearby adaptive-reuse and apartment projects show that private capital has already validated the residential thesis.</li>
+            <li>Legacy automotive uses increasingly feel underutilized relative to the corridor’s centrality and infrastructure.</li>
           </ul>
-        </section>
-
-        <section class="panel" id="message">
-          <h2 class="section-title">Buyer message</h2>
-          <div class="quote">"This site gives you the chance to redevelop a legacy auto-oriented parcel in a corridor that already has the basics residential buyers and renters care about: central access, transit, healthcare, groceries, culture, schools, and neighborhood infrastructure. Van Ness does not need a speculative story to work. It already works, and the public realm improvements only make the case stronger."</div>
+          <div class="quote">"This site offers the opportunity to reposition a legacy auto-oriented parcel into residential use in a corridor that already has the fundamentals investors look for: central access, transit, healthcare, groceries, culture, schools, and established neighborhood infrastructure. Van Ness does not depend on a speculative future story. It already functions as a viable urban residential corridor, and public improvements only strengthen that case."</div>
         </section>
 
         <section class="panel" id="risks">
