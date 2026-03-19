@@ -245,6 +245,44 @@
       border-radius: 18px;
       padding: 12px;
     }
+    .inline-figure {
+      margin: 18px 0 26px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+    .inline-figure img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .image-pair {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin: 16px 0 18px;
+    }
+    .image-pair img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+    .target-visual,
+    .zoning-visual {
+      width: 100%;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      margin: 14px 0 18px;
+      object-fit: cover;
+    }
+    .target-visual {
+      max-height: 300px;
+    }
     .image-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
@@ -312,6 +350,8 @@
       }
       .cards { grid-template-columns: repeat(2, minmax(0,1fr)); }
       .image-grid { grid-template-columns: 1fr; }
+      .image-pair { grid-template-columns: 1fr; }
+      .image-pair img { height: 220px; }
       .two-col { grid-template-columns: 1fr; }
     }
     @media (max-width: 680px) {
@@ -361,6 +401,9 @@
         <section class="panel active" id="overview">
           <h2 class="section-title">Executive summary</h2>
           <div class="lede"><strong>Bottom line:</strong> 950 Van Ness is in a central San Francisco corridor that already supports dense urban living. Major healthcare, cultural, retail, education, and transit assets are all close by. The latest CoStar data for the Civic Center/Tenderloin multifamily submarket also shows improving fundamentals: vacancy has tightened to 5.5%, asking rents are up to $2,591 per unit, and no new units were delivered in the last 12 months.</div>
+          <div class="inline-figure">
+            <img src="950-van-ness-exterior.png" alt="950 Van Ness exterior" />
+          </div>
           <div class="cards">
             <div class="card"><div class="k">Submarket vacancy</div><div class="v">5.5%</div><div class="s">Improved from 6.7% one year earlier.</div></div>
             <div class="card"><div class="k">Submarket asking rent</div><div class="v">$2,591</div><div class="s">Below city average, supporting affordability-driven demand.</div></div>
@@ -369,7 +412,7 @@
           </div>
           <ul>
             <li><strong>Central location:</strong> Fast access to Downtown, Hayes Valley, Nob Hill, Japantown, SOMA, and northern neighborhoods.</li>
-            <li><strong>Transit-led positioning:</strong> Van Ness BART materially improved corridor mobility, reliability, and safety.</li>
+            <li><strong>Transit-led positioning:</strong> Van Ness Bus Rapid Transit (BRT) materially improved corridor mobility, reliability, and safety.</li>
             <li><strong>Residential precedent:</strong> Nearby product like 100 Van Ness, 150 Van Ness, and Opera Plaza proves the corridor already works for housing.</li>
             <li><strong>Institutional anchors:</strong> Healthcare, education, and civic uses support steady daily demand.</li>
             <li><strong>Redevelopment story:</strong> The site reads as a legacy auto use in a corridor increasingly aligned with residential and mixed-use redevelopment.</li>
@@ -383,26 +426,38 @@
             <div class="mini">
               <h4>Current read</h4>
               <ul>
-                <li>Automotive / dealership / vehicle-related identity</li>
-                <li>Legacy low-intensity use on a major urban corridor</li>
-                <li>Better land-use fit today is housing or mixed-use residential</li>
+                <li>Automotive / dealership identity on a high-visibility corner.</li>
+                <li>Legacy low-intensity use on a major urban corridor.</li>
+                <li>RC-4 zoning already anticipates high-density residential mixed with active ground floors.</li>
               </ul>
             </div>
             <div class="mini">
-              <h4>Best buyer story</h4>
+              <h4>Redevelopment logic</h4>
               <ul>
-                <li>Residential redevelopment tied to improved transit</li>
-                <li>Healthcare and cultural adjacency</li>
-                <li>Established urban-living appeal rather than a speculative location</li>
+                <li>Two-story, 44,000-SF structure on 0.37 acres presents an immediate intensity gap versus neighboring multifamily product.</li>
+                <li>Owner-user (Academy of Art University) control means no multi-tenant lease-down is required before construction.</li>
+                <li>Corner frontage on Van Ness, O’Farrell, and Olive delivers 300+ feet of exposure for future residential or mixed-use podium programming.</li>
               </ul>
             </div>
           </div>
-          <p><strong>Core pitch:</strong> this is central San Francisco on a major boulevard, with major transit investment and neighborhood infrastructure already in place.</p>
-          <p class="source">Site-specific zoning, parcel dimensions, and building metrics should still be cross-checked directly against the OM and San Francisco Planning records before final investment use.</p>
+          <div class="cards">
+            <div class="card"><div class="k">GLA</div><div class="v">44,000 SF</div><div class="s">Two-story auto showroom (built 1919).</div></div>
+            <div class="card"><div class="k">Lot size</div><div class="v">0.37 acres</div><div class="s">16,122 SF corner parcel; FAR 2.73 today.</div></div>
+            <div class="card"><div class="k">Zoning</div><div class="v">RC-4</div><div class="s">High-density residential with ground-floor commercial.</div></div>
+            <div class="card"><div class="k">Ownership</div><div class="v">Academy of Art</div><div class="s">Recorded owner: 950 Van Ness Avenue LLC (owner-occupied).</div></div>
+            <div class="card"><div class="k">Last trade</div><div class="v">$8.45M</div><div class="s">Sold Oct 2009 ($192/SF) as an owner-user acquisition.</div></div>
+            <div class="card"><div class="k">Operating snapshot</div><div class="v">$2.88/SF taxes</div><div class="s">CoStar est. rent $34–$41/SF; transit score 100 / walk score 90.</div></div>
+          </div>
+          <p><strong>Investment view:</strong> repositioning replaces a low-density auto showroom with residential density that already aligns with RC-4 controls, the Family Zoning Plan, and Van Ness Area Plan objectives.</p>
+          <p class="source">Source: CoStar property detail (download dated Mar 18, 2026). Confirm lot, entitlement, and tenant conditions directly with San Francisco Planning and recorded documents during diligence.</p>
         </section>
 
         <section class="panel" id="why">
           <h2 class="section-title">Why this location works for residential</h2>
+          <div class="image-pair">
+            <img src="van-ness-brt.png" alt="Van Ness BRT improvements" />
+            <img src="van-ness-aerial.png" alt="Van Ness aerial view" />
+          </div>
           <h3>Centrality</h3>
           <p>Van Ness is one of the city’s main north-south corridors. From 950 Van Ness, residents can reach Downtown, Civic Center, Hayes Valley, Polk Street, Nob Hill, and Japantown with relative ease. That kind of access is one of the clearest reasons housing works here.</p>
           <h3>Transit access</h3>
@@ -420,6 +475,7 @@
         <section class="panel" id="zoning">
           <h2 class="section-title">Zoning & policy alignment</h2>
           <p>San Francisco’s current policy environment actively encourages higher-density, mixed-use housing on the Van Ness corridor. The newly adopted Family Zoning Plan and the long-standing Van Ness Avenue Area Plan both call for exactly the kind of residential replacement envisioned for 950 Van Ness.</p>
+          <img class="zoning-visual" src="zoning-map.png" alt="Zoning map highlighting 950 Van Ness" />
           <div class="two-col">
             <div class="mini">
               <h4>Family Zoning Plan (2025)</h4>
@@ -446,11 +502,11 @@
         <section class="panel" id="risks">
           <h2 class="section-title">Risks / watchpoints</h2>
           <ul>
-            <li>Immediate tract income is below citywide levels, so positioning should focus on corridor upside, central access, and product differentiation.</li>
-            <li>Parts of the broader Civic Center / Tenderloin edge can carry perception issues; the pitch should counter this with healthcare, culture, transit investment, and corridor identity.</li>
-            <li>CoStar shows the submarket is improving, but it still trails the broader market on vacancy and rent levels, so underwriting should remain disciplined.</li>
-            <li>Transaction volume in the submarket is relatively thin, which means valuation support and buyer depth may be more limited than in stronger institutional submarkets.</li>
-            <li>Parcel data, entitlement assumptions, height/bulk controls, zoning, and unit-yield assumptions should still be verified directly against planning records and the OM.</li>
+            <li>Immediate tract income is below the citywide average, so rent and product assumptions should emphasize value relative to core San Francisco benchmarks.</li>
+            <li>Perception issues along the Civic Center / Tenderloin edge persist; plan for enhanced onsite management, activation, and communications to keep the corridor experience aligned with Van Ness investments.</li>
+            <li>Submarket vacancy and rent levels still trail the broader metro despite progress—phase underwriting to reflect conservative lease-up and rent-growth curves.</li>
+            <li>Only eight transactions (~$40M) closed in the past 12 months, so valuation support and financing comps are thinner than in top-tier institutional submarkets.</li>
+            <li>Confirm parcel data, RC-4 controls, height/bulk allowances, and Academy of Art occupancy timelines directly with Planning and the OM before locking a development program.</li>
           </ul>
         </section>
 
@@ -527,6 +583,7 @@
 
         <section class="panel" id="resident">
           <h2 class="section-title">Target demand profile</h2>
+          <img src="target-audience.png" alt="Target audience illustration" class="target-visual" />
           <ul>
             <li>Young professionals who want central access without depending on a car</li>
             <li>Medical professionals and healthcare staff given proximity to CPMC and related medical offices</li>
