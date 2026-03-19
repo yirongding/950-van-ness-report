@@ -6,15 +6,15 @@
   <title>950 Van Ness Ave — Residential Redevelopment Report</title>
   <style>
     :root {
-      --bg: #f4f6fb;
+      --bg: #f7f5f0;
       --panel: #ffffff;
-      --text: #1c2434;
-      --muted: #667085;
-      --line: #e6eaf2;
-      --brand: #183969;
-      --brand-2: #2457a6;
-      --accent: #eef4ff;
-      --shadow: 0 14px 40px rgba(16, 24, 40, 0.08);
+      --text: #111111;
+      --muted: #6e6e6e;
+      --line: #e4dfd3;
+      --brand: #111111;
+      --brand-2: #aa566b;
+      --accent: #c9a24d;
+      --shadow: 0 14px 40px rgba(17, 17, 17, 0.08);
       --radius: 18px;
     }
     * { box-sizing: border-box; }
@@ -22,7 +22,7 @@
       margin: 0;
       font-family: Inter, Arial, sans-serif;
       color: var(--text);
-      background: linear-gradient(180deg, #eef3fb 0%, var(--bg) 220px);
+      background: linear-gradient(180deg, #f7f5f0 0%, #f1ecde 220px);
     }
     .page {
       max-width: 1380px;
@@ -30,7 +30,7 @@
       padding: 28px;
     }
     .hero {
-      background: linear-gradient(135deg, var(--brand) 0%, #234a86 45%, #2e6bc0 100%);
+      background: linear-gradient(135deg, #111111 0%, #2f1c20 45%, #aa566b 100%);
       color: white;
       border-radius: 26px;
       padding: 34px 36px;
@@ -53,7 +53,7 @@
       margin: 0;
       max-width: 950px;
       line-height: 1.6;
-      color: rgba(255,255,255,.92);
+      color: rgba(247,245,240,.9);
     }
     .meta {
       display: flex;
@@ -63,14 +63,14 @@
     }
     .disclaimer {
       margin: 0 0 22px;
-      background: #fffdf7;
-      border: 1px solid #efe1b3;
+      background: #f7f5f0;
+      border: 1px solid #c9a24d;
       border-radius: 16px;
       padding: 16px 18px;
       box-shadow: var(--shadow);
     }
     .disclaimer strong {
-      color: #8a5a00;
+      color: #c9a24d;
     }
     .pill {
       background: rgba(255,255,255,.12);
@@ -111,8 +111,8 @@
       width: 100%;
       text-align: left;
       border: 1px solid var(--line);
-      background: #f8fbff;
-      color: var(--brand);
+      background: #f1ecde;
+      color: var(--text);
       padding: 12px 14px;
       border-radius: 12px;
       cursor: pointer;
@@ -137,11 +137,11 @@
       font-size: 14px;
       line-height: 1.4;
     }
-    .tab-btn:hover { background: #f7f9fd; }
+    .tab-btn:hover { background: #f2eee2; }
     .tab-btn.active {
       background: var(--accent);
-      color: var(--brand);
-      border-color: #cddcf8;
+      color: #111111;
+      border-color: #b98a38;
       font-weight: 600;
     }
     .content {
@@ -165,12 +165,12 @@
       line-height: 1.15;
     }
     .lede {
-      background: #f8fbff;
-      border-left: 4px solid var(--brand-2);
+      background: #f1ecde;
+      border-left: 4px solid var(--accent);
       padding: 14px 16px;
       border-radius: 12px;
       margin-bottom: 18px;
-      color: #344054;
+      color: var(--text);
       line-height: 1.65;
     }
     p { line-height: 1.7; margin: 0 0 14px; }
@@ -186,7 +186,7 @@
       grid-template-columns: repeat(3, minmax(0,1fr));
     }
     .card {
-      background: #fafcff;
+      background: #fffdf5;
       border: 1px solid var(--line);
       border-radius: 16px;
       padding: 14px;
@@ -201,11 +201,11 @@
     .card .v {
       font-size: 28px;
       font-weight: 700;
-      color: var(--brand);
+      color: var(--brand-2);
       margin-bottom: 6px;
     }
     .card .s {
-      color: #475467;
+      color: var(--muted);
       font-size: 13px;
       line-height: 1.45;
     }
@@ -223,8 +223,8 @@
       line-height: 1.5;
     }
     th {
-      background: #f6f8fc;
-      color: var(--brand);
+      background: #f1ecde;
+      color: var(--text);
       font-weight: 700;
     }
     .source {
@@ -233,17 +233,17 @@
       margin-top: 10px;
     }
     .quote {
-      background: linear-gradient(180deg, #f8fbff, #eef4ff);
-      border: 1px solid #d4e1fb;
+      background: linear-gradient(180deg, #f7f5f0, #f1ecde);
+      border: 1px solid #c9a24d;
       border-radius: 16px;
       padding: 18px;
       font-size: 18px;
       line-height: 1.6;
-      color: #23314f;
+      color: var(--text);
     }
     .figure {
       margin: 18px 0 20px;
-      background: #fbfcfe;
+      background: #fffdf5;
       border: 1px solid var(--line);
       border-radius: 18px;
       padding: 12px;
@@ -293,7 +293,7 @@
       margin: 18px 0 20px;
     }
     .image-card {
-      background: #fbfcfe;
+      background: #fffdf5;
       border: 1px solid var(--line);
       border-radius: 18px;
       overflow: hidden;
@@ -303,13 +303,40 @@
       height: 220px;
       object-fit: cover;
       display: block;
-      background: #eef2f8;
+      background: #f1ecde;
     }
     .image-card .cap {
       padding: 12px 14px;
       font-size: 13px;
       color: var(--muted);
       line-height: 1.5;
+    }
+    .property-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin: 12px 0 20px;
+    }
+    .property-gallery figure {
+      background: #fffdf5;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      margin: 0;
+      box-shadow: var(--shadow);
+    }
+    .property-gallery img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+    }
+    .property-gallery figcaption {
+      padding: 10px 12px;
+      font-size: 13px;
+      color: var(--muted);
+      text-align: center;
+      background: #f1ecde;
     }
     .figure img {
       display: block;
@@ -331,12 +358,12 @@
       gap: 18px;
     }
     .mini {
-      background: #fafcff;
+      background: #fffdf5;
       border: 1px solid var(--line);
       border-radius: 16px;
       padding: 18px;
     }
-    .mini h4 { margin: 0 0 10px; color: var(--brand); font-size: 18px; }
+    .mini h4 { margin: 0 0 10px; color: var(--text); font-size: 18px; }
     @media (max-width: 1100px) {
       .layout { grid-template-columns: 1fr; }
       .sidebar { position: static; }
@@ -451,7 +478,32 @@
             <div class="card"><div class="k">Zoning</div><div class="v">RC-4</div><div class="s">High-density residential with ground-floor commercial.</div></div>
             <div class="card"><div class="k">Ownership</div><div class="v">Academy of Art</div><div class="s">Recorded owner: 950 Van Ness Avenue LLC (owner-occupied).</div></div>
             <div class="card"><div class="k">Last trade</div><div class="v">$8.45M</div><div class="s">Sold Oct 2009 ($192/SF) as an owner-user acquisition.</div></div>
-            <div class="card"><div class="k">Operating snapshot</div><div class="v">$126,846.88 taxes (FY24‑25)</div><div class="s">County roll via CoStar public record; $2.88/SF load and estimated rent $34–$41/SF.</div></div>
+          </div>
+          <div class="figure">
+            <img src="property-tax-record.png" alt="FY24-25 San Francisco secured property tax record excerpt" />
+            <div class="figcap">FY24-25 secured property tax roll excerpt for 950 Van Ness (CoStar public record / county-taxes.net).</div>
+          </div>
+          <div class="property-gallery">
+            <figure>
+              <img src="co-star-primary.png" alt="Primary Photo from CoStar" />
+              <figcaption>Primary Photo</figcaption>
+            </figure>
+            <figure>
+              <img src="co-star-building.png" alt="Building photo from CoStar" />
+              <figcaption>Building Photo</figcaption>
+            </figure>
+            <figure>
+              <img src="co-star-aerial.png" alt="Aerial photo from CoStar" />
+              <figcaption>Aerial</figcaption>
+            </figure>
+            <figure>
+              <img src="co-star-plat.png" alt="Plat map from CoStar" />
+              <figcaption>Plat Map</figcaption>
+            </figure>
+            <figure>
+              <img src="co-star-building-2.png" alt="Second building photo from CoStar" />
+              <figcaption>Building Photo</figcaption>
+            </figure>
           </div>
           <p><strong>Investment view:</strong> repositioning replaces a low-density auto showroom with residential density that already aligns with RC-4 controls, the Family Zoning Plan, and Van Ness Area Plan objectives.</p>
           <p class="source">Source: CoStar property detail (download dated Mar 18, 2026). Confirm lot, entitlement, and tenant conditions directly with San Francisco Planning and recorded documents during diligence.</p>
