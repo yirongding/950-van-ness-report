@@ -480,6 +480,28 @@
       border-radius: 16px;
       padding: 18px;
       transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+    .comp-number {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      background: var(--accent);
+      color: #111;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 13px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      border: 2px solid #fff;
+    }
+    .comp-number.subject {
+      background: var(--brand-2);
+      color: #fff;
     }
     .rent-comp-card:hover {
       transform: translateY(-2px);
@@ -518,6 +540,26 @@
       color: var(--muted);
       margin: 0;
       font-style: italic;
+    }
+    .map-container {
+      margin: 20px 0 30px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+    .map-container iframe {
+      display: block;
+      width: 100%;
+      height: 400px;
+    }
+    .map-note {
+      background: #f1ecde;
+      padding: 12px 16px;
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
     }
     .fine-print {
       font-size: 12px;
@@ -1483,9 +1525,24 @@
             </tbody>
           </table>
           
+          <h3>Property Locations Map</h3>
+          <div class="map-container">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.09774203303!2d-122.42076168468238!3d37.78439997975743!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c3f2d8f7b%3A0x8c5e0e8e5e5e5e5e!2s950%20Van%20Ness%20Ave%2C%20San%20Francisco%2C%20CA%2094109!5e0!3m2!1sen!2sus!4v1609459200000!5m2!1sen!2sus" 
+              width="100%" 
+              height="400" 
+              style="border:0; border-radius: 16px;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+            <p class="map-note">Interactive map centered on 950 Van Ness (Subject Property). Use the map to explore the neighborhood and see nearby comparable properties.</p>
+          </div>
+          
           <h3>Comparable Properties</h3>
           <div class="rent-comp-grid">
             <div class="rent-comp-card">
+              <div class="comp-number">1</div>
               <h4><a href="https://www.apartments.com/100-van-ness-san-francisco-ca/yv6dh0t/" target="_blank">100 Van Ness</a></h4>
               <p class="comp-address">100 Van Ness Ave</p>
               <p class="comp-details">2014 • 418 units • 28 stories • Class A Luxury • 4.9★</p>
@@ -1493,6 +1550,7 @@
               <p class="comp-distance">0.52 miles from subject</p>
             </div>
             <div class="rent-comp-card">
+              <div class="comp-number">2</div>
               <h4><a href="https://www.apartments.com/150-van-ness-san-francisco-ca/8pdvlx3/" target="_blank">150 Van Ness</a></h4>
               <p class="comp-address">150 Van Ness Ave</p>
               <p class="comp-details">2018 • 420 units • 13 stories • Class A Luxury • 4.5★</p>
@@ -1500,6 +1558,7 @@
               <p class="comp-distance">0.48 miles from subject</p>
             </div>
             <div class="rent-comp-card">
+              <div class="comp-number">3</div>
               <h4><a href="https://www.apartments.com/the-civic-san-francisco-ca/32sh4lf/" target="_blank">The Civic</a></h4>
               <p class="comp-address">101-103 Polk St</p>
               <p class="comp-details">2015 • 162 units • 14 stories • Class A • 4.8★</p>
@@ -1507,6 +1566,7 @@
               <p class="comp-distance">0.30 miles from subject</p>
             </div>
             <div class="rent-comp-card">
+              <div class="comp-number">4</div>
               <h4><a href="https://www.zumper.com/address/opera-plz-601-van-ness-ave-san-francisco-ca-94102-usa" target="_blank">Opera Plaza</a></h4>
               <p class="comp-address">601 Van Ness Ave</p>
               <p class="comp-details">1981 • 453 units • 13 stories • Class B Condo • 5.0★</p>
@@ -1514,6 +1574,7 @@
               <p class="comp-distance">0.35 miles from subject • Individual condo rentals</p>
             </div>
             <div class="rent-comp-card">
+              <div class="comp-number">5</div>
               <h4><a href="https://www.apartments.com/nema-san-francisco-ca/8z5g891/" target="_blank">NEMA</a></h4>
               <p class="comp-address">8 10th St</p>
               <p class="comp-details">2014 • 754 units • 35 stories • Class A Luxury • 5.0★</p>
@@ -1521,6 +1582,7 @@
               <p class="comp-distance">0.55 miles from subject • SOMA location</p>
             </div>
             <div class="rent-comp-card">
+              <div class="comp-number">6</div>
               <h4><a href="https://www.apartments.com/tl-residences-san-francisco-ca/bpkgzbb/" target="_blank">TL Residences</a></h4>
               <p class="comp-address">361 Turk St</p>
               <p class="comp-details">2022 • 240 units • 8 stories • Class A Micro-Units • 5.0★</p>
@@ -1528,6 +1590,7 @@
               <p class="comp-distance">0.15 miles from subject</p>
             </div>
             <div class="rent-comp-card">
+              <div class="comp-number">7</div>
               <h4><a href="https://www.apartments.com/geary-courtyard-san-francisco-ca/kvh3nk8/" target="_blank">Geary Courtyard</a></h4>
               <p class="comp-address">639 Geary St</p>
               <p class="comp-details">1990 • 165 units • 13 stories • Class B • 4.5★</p>
@@ -1535,6 +1598,7 @@
               <p class="comp-distance">0.25 miles from subject</p>
             </div>
             <div class="rent-comp-card">
+              <div class="comp-number">8</div>
               <h4><a href="https://www.apartments.com/tower-737-condominium-rentals-san-francisco-ca/g44fkey/" target="_blank">Tower 737</a></h4>
               <p class="comp-address">737 Post St</p>
               <p class="comp-details">1988 • 248 units • 17 stories • Class B • 4.8★</p>
@@ -1542,6 +1606,7 @@
               <p class="comp-distance">0.20 miles from subject • Furnished units available</p>
             </div>
             <div class="rent-comp-card">
+              <div class="comp-number">9</div>
               <h4><a href="https://www.apartments.com/50-jones-san-francisco-ca/79rtqtx/" target="_blank">50 Jones</a></h4>
               <p class="comp-address">50 Jones St</p>
               <p class="comp-details">2020 • 303 units • 14 stories • Class A • 4.4★</p>
@@ -1549,6 +1614,7 @@
               <p class="comp-distance">0.25 miles from subject</p>
             </div>
             <div class="rent-comp-card">
+              <div class="comp-number">10</div>
               <h4><a href="https://www.apartments.com/fox-plaza-san-francisco-ca/9ffy8k5/" target="_blank">Fox Plaza</a></h4>
               <p class="comp-address">1390 Market St</p>
               <p class="comp-details">1966 • 445 units • 29 stories • Class A • 4.9★</p>
@@ -1556,6 +1622,7 @@
               <p class="comp-distance">0.35 miles from subject • 99 Walk Score</p>
             </div>
             <div class="rent-comp-card">
+              <div class="comp-number">11</div>
               <h4><a href="https://www.apartments.com/145-leavenworth-st-san-francisco-ca/x1sl86m/" target="_blank">145 Leavenworth St</a></h4>
               <p class="comp-address">145 Leavenworth St</p>
               <p class="comp-details">2022 • 94 units • 8 stories • Class B Micro • 4.0★</p>
@@ -1563,6 +1630,7 @@
               <p class="comp-distance">0.20 miles from subject</p>
             </div>
             <div class="rent-comp-card">
+              <div class="comp-number">12</div>
               <h4><a href="https://www.apartments.com/the-cornelia-suites-san-francisco-ca/9zsv587/" target="_blank">The Cornelia Suites</a></h4>
               <p class="comp-address">641 O'Farrell St</p>
               <p class="comp-details">1907 • 97 units • 7 stories • Class B • 4.5★</p>
@@ -1570,6 +1638,7 @@
               <p class="comp-distance">0.15 miles from subject • Historic Edwardian building</p>
             </div>
             <div class="rent-comp-card">
+              <div class="comp-number">13</div>
               <h4><a href="https://www.apartments.com/found-study-san-francisco-student-housing-san-francisco-ca/8kb4893/" target="_blank">FOUND Study</a></h4>
               <p class="comp-address">16 Turk St</p>
               <p class="comp-details">2019 • 72 units • 12 stories • Student Housing • 5.0★</p>
@@ -1577,6 +1646,7 @@
               <p class="comp-distance">0.25 miles from subject • Student housing only</p>
             </div>
             <div class="rent-comp-card">
+              <div class="comp-number">14</div>
               <h4><a href="https://www.apartments.com/prism-san-francisco-ca/f6w4p9t/" target="_blank">Prism</a></h4>
               <p class="comp-address">1028 Market St</p>
               <p class="comp-details">2022 • 186 units • 13 stories • Class A • 4.8★</p>
@@ -1584,6 +1654,7 @@
               <p class="comp-distance">0.45 miles from subject</p>
             </div>
             <div class="rent-comp-card">
+              <div class="comp-number">15</div>
               <h4><a href="https://www.apartments.com/warrington-apartments-san-francisco-ca/14znvw5/" target="_blank">Warrington Apartments</a></h4>
               <p class="comp-address">775 Post St</p>
               <p class="comp-details">1913 • 45 units • 6 stories • Class B • 4.5★</p>
@@ -1591,6 +1662,7 @@
               <p class="comp-distance">0.25 miles from subject • Historic building</p>
             </div>
             <div class="rent-comp-card">
+              <div class="comp-number">16</div>
               <h4><a href="https://www.apartments.com/argenta-san-francisco-ca/sz62h77/" target="_blank">Argenta</a></h4>
               <p class="comp-address">1 Polk St</p>
               <p class="comp-details">2008 • 179 units • 21 stories • Class A • 4.6★</p>
@@ -1598,6 +1670,7 @@
               <p class="comp-distance">0.30 miles from subject • Luxury high-rise</p>
             </div>
             <div class="rent-comp-card">
+              <div class="comp-number">17</div>
               <h4><a href="https://www.apartments.com/sf-house-san-francisco-ca/tt0xekb/" target="_blank">SF House</a></h4>
               <p class="comp-address">229 Ellis St</p>
               <p class="comp-details">2021 • 55 units • 6 stories • Co-Living • 4.5★</p>
@@ -1605,6 +1678,7 @@
               <p class="comp-distance">0.20 miles from subject • Co-living community</p>
             </div>
             <div class="rent-comp-card">
+              <div class="comp-number">18</div>
               <h4><a href="https://www.apartments.com/vance-san-francisco-ca/fzw832s/" target="_blank">Vance</a></h4>
               <p class="comp-address">830 Eddy St</p>
               <p class="comp-details">2021 • 137 units • 12 stories • Class A • 4.5★</p>
@@ -1612,6 +1686,7 @@
               <p class="comp-distance">0.30 miles from subject • Gated parking with EV charging</p>
             </div>
             <div class="rent-comp-card">
+              <div class="comp-number">19</div>
               <h4><a href="https://www.apartments.com/the-oak-sf-san-francisco-ca/223v3e9/" target="_blank">The Oak SF</a></h4>
               <p class="comp-address">55 Oak St</p>
               <p class="comp-details">2021 • 109 units • 12 stories • Class A • 4.5★</p>
@@ -1619,6 +1694,7 @@
               <p class="comp-distance">0.25 miles from subject</p>
             </div>
             <div class="rent-comp-card">
+              <div class="comp-number">20</div>
               <h4><a href="https://www.apartments.com/24-franklin-san-francisco-ca/kjyf238/" target="_blank">24 Franklin</a></h4>
               <p class="comp-address">22-24 Franklin St</p>
               <p class="comp-details">2018 • 35 units • 6 stories • Class B • 4.0★</p>
