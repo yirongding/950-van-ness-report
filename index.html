@@ -558,6 +558,13 @@
       display: block;
       width: 100%;
       height: auto;
+      cursor: zoom-in;
+      transition: transform 0.3s ease;
+    }
+    .map-container.zoomed img {
+      cursor: zoom-out;
+      transform: scale(1.5);
+      transform-origin: center center;
     }
     .map-note {
       background: #f1ecde;
@@ -566,6 +573,11 @@
       font-size: 13px;
       color: var(--muted);
       border-top: 1px solid var(--line);
+    }
+    .zoom-hint {
+      font-size: 11px;
+      color: var(--accent);
+      margin-left: 8px;
     }
     .rent-comp-grid {
       display: grid;
@@ -1583,9 +1595,9 @@
           </table>
           
           <h3>Property Locations Map</h3>
-          <div class="map-container">
+          <div class="map-container" id="rentMap">
             <img src="950-van-ness-rent-comps-map.png" alt="950 Van Ness Rent Comparables Map" />
-            <p class="map-note"><strong>Subject Property:</strong> 950 Van Ness Ave (★) | <strong>Numbers 1-20:</strong> Comparable rental properties</p>
+            <p class="map-note"><strong>Subject Property:</strong> 950 Van Ness Ave (★) | <strong>Numbers 1-20:</strong> Comparable rental properties <span class="zoom-hint">(click image to zoom)</span></p>
           </div>
           
           <h3>Comparable Properties</h3>
@@ -1812,6 +1824,14 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     });
+
+    // Map zoom functionality
+    const rentMap = document.getElementById('rentMap');
+    if (rentMap) {
+      rentMap.addEventListener('click', () => {
+        rentMap.classList.toggle('zoomed');
+      });
+    }
   </script>
 </body>
 </html>
