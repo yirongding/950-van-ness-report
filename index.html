@@ -464,6 +464,50 @@
       color: var(--muted);
       font-style: italic;
     }
+    .sale-status-active {
+      background: rgba(76, 175, 80, 0.08);
+    }
+    .sale-status-active td:first-child,
+    .sale-status-active .sale-status-pill {
+      color: #2e7d32;
+    }
+    .sale-status-contingent {
+      background: rgba(255, 152, 0, 0.08);
+    }
+    .sale-status-contingent td:first-child,
+    .sale-status-contingent .sale-status-pill {
+      color: #e65100;
+    }
+    .sale-status-sold {
+      background: rgba(198, 40, 40, 0.07);
+    }
+    .sale-status-sold td:first-child,
+    .sale-status-sold .sale-status-pill {
+      color: #b71c1c;
+    }
+    .sale-comp-num {
+      display: inline-flex;
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      border: 1px solid currentColor;
+      background: rgba(255,255,255,0.72);
+    }
+    .sale-status-pill {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(0,0,0,0.08);
+      text-transform: uppercase;
+    }
     /* Spacing fix for zoning page */
     .zoning-takeaway {
       margin-top: 24px;
@@ -1834,57 +1878,43 @@
             <img src="950-van-ness-sale-comps-map.png" alt="950 Van Ness Sale Comparables Map - numbered sale comps in the Van Ness / Civic Center area" />
           </div>
 
-          <h3>Sold Comps</h3>
+          <h3>All Sale Comps</h3>
+          <p class="table-disclaimer">Ordered to match the numbering shown on the sale comp map.</p>
           <table>
             <thead>
               <tr>
+                <th>#</th>
+                <th>Status</th>
                 <th>Address</th>
                 <th>Beds / Baths</th>
                 <th>SF</th>
+                <th>HOA</th>
+                <th>List Price</th>
                 <th>Sale Price</th>
                 <th>$/SF</th>
                 <th>Close Date</th>
                 <th>DOM</th>
-                <th>Notes</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>1 Daniel Burnham Ct #1610</td><td>3 / 2</td><td>1,598</td><td>$1,190,000</td><td>$744.68</td><td>2026-02-27</td><td>103</td><td>Opera Plaza area; 2 garage spaces; pool building</td></tr>
-              <tr><td>1688 Pine St #402</td><td>2 / 2</td><td>1,040</td><td>$1,050,000</td><td>$1,009.62</td><td>2025-12-12</td><td>60</td><td>Rockwell</td></tr>
-              <tr><td>1388 Gough St #1001</td><td>2 / 2</td><td>1,382</td><td>$1,050,000</td><td>$759.77</td><td>2025-12-23</td><td>200</td><td>High HOA</td></tr>
-              <tr><td>1200 Gough St #10A</td><td>2 / 2</td><td>1,500</td><td>$980,000</td><td>$653.33</td><td>2025-12-09</td><td>114</td><td>1 garage space</td></tr>
-              <tr><td>1483 Sutter St #301</td><td>1 / 1</td><td>801</td><td>$690,000</td><td>$861.42</td><td>2025-12-08</td><td>113</td><td>1 garage space</td></tr>
-              <tr><td>1200 Gough St #14D</td><td>1 / 1</td><td>900</td><td>$683,500</td><td>$759.44</td><td>2025-12-22</td><td>68</td><td>McKinley Elementary; 1 garage space</td></tr>
-              <tr><td>601 Van Ness Ave #67</td><td>2 / 2</td><td>977</td><td>$625,000</td><td>$639.71</td><td>2026-01-29</td><td>129</td><td>Opera Plaza; pool building</td></tr>
-              <tr><td>1201 Sutter St PH605</td><td>1 / 1</td><td>Not available</td><td>$555,000</td><td>Not available</td><td>2026-01-09</td><td>86</td><td>Penthouse; newer building</td></tr>
-              <tr><td>601 Van Ness Ave #1102</td><td>1 / 1</td><td>676</td><td>$465,000</td><td>$687.87</td><td>2026-01-02</td><td>186</td><td>Opera Plaza; pool building</td></tr>
-              <tr><td>601 Van Ness Ave #750</td><td>1 / 1</td><td>666</td><td>$450,000</td><td>$675.68</td><td>2026-02-26</td><td>140</td><td>Opera Plaza; pool building</td></tr>
-              <tr><td>601 Van Ness Ave #812</td><td>1 / 1</td><td>708</td><td>$445,645</td><td>$629.44</td><td>2026-02-09</td><td>103</td><td>Opera Plaza; pool building</td></tr>
-              <tr><td>601 Van Ness Ave #1047</td><td>1 / 1</td><td>621</td><td>$435,000</td><td>$700.48</td><td>2025-12-01</td><td>102</td><td>Opera Plaza; pool building</td></tr>
-              <tr><td>1688 Pine St #101</td><td>2 / 2</td><td>886</td><td>$335,512</td><td>$378.68</td><td>2025-12-29</td><td>414</td><td>Rockwell</td></tr>
-              <tr><td>1238 Sutter St #303</td><td>1 / 1</td><td>420</td><td>$325,000</td><td>$773.81</td><td>2026-03-24</td><td>757</td><td>Smaller unit</td></tr>
-            </tbody>
-          </table>
-
-          <h3>Active / Contingent Listings</h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Address</th>
-                <th>Status</th>
-                <th>Beds / Baths</th>
-                <th>SF</th>
-                <th>List Price</th>
-                <th>$/SF</th>
-                <th>DOM</th>
-                <th>Notes</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>1 Daniel Burnham Ct #816</td><td>Active</td><td>1 / 1</td><td>723</td><td>$580,000</td><td>$802.21</td><td>240</td><td>Pool building; 1 garage space</td></tr>
-              <tr><td>1433 Bush St #405</td><td>Active</td><td>0 / 1</td><td>383</td><td>$498,800</td><td>$1,302.35</td><td>17</td><td>Studio</td></tr>
-              <tr><td>83 McAllister St #302</td><td>Active</td><td>0 / 1</td><td>255</td><td>$288,000</td><td>$1,129.41</td><td>5</td><td>Studio</td></tr>
-              <tr><td>1000 Franklin St #305</td><td>Contingent</td><td>2 / 2</td><td>1,054</td><td>$659,000</td><td>$625.24</td><td>267</td><td>Contingent</td></tr>
+              <tr class="sale-status-active"><td><span class="sale-comp-num">1</span></td><td><span class="sale-status-pill">Active</span></td><td>1 Daniel Burnham Ct #816</td><td>1 / 1</td><td>723</td><td>$1,306</td><td>$580,000</td><td>—</td><td>$802.21</td><td>—</td><td>240</td></tr>
+              <tr class="sale-status-active"><td><span class="sale-comp-num">2</span></td><td><span class="sale-status-pill">Active</span></td><td>1433 Bush St #405</td><td>0 / 1</td><td>383</td><td>$726</td><td>$498,800</td><td>—</td><td>$1,302.35</td><td>—</td><td>17</td></tr>
+              <tr class="sale-status-active"><td><span class="sale-comp-num">3</span></td><td><span class="sale-status-pill">Active</span></td><td>83 McAllister St #302</td><td>0 / 1</td><td>255</td><td>$530</td><td>$288,000</td><td>—</td><td>$1,129.41</td><td>—</td><td>5</td></tr>
+              <tr class="sale-status-contingent"><td><span class="sale-comp-num">4</span></td><td><span class="sale-status-pill">Contingent</span></td><td>1000 Franklin St #305</td><td>2 / 2</td><td>1,054</td><td>$793</td><td>$659,000</td><td>—</td><td>$625.24</td><td>—</td><td>267</td></tr>
+              <tr class="sale-status-sold"><td><span class="sale-comp-num">5</span></td><td><span class="sale-status-pill">Sold</span></td><td>1 Daniel Burnham Ct #1610</td><td>3 / 2</td><td>1,598</td><td>$2,692</td><td>$1,198,000</td><td>$1,190,000</td><td>$744.68</td><td>2026-02-27</td><td>103</td></tr>
+              <tr class="sale-status-sold"><td><span class="sale-comp-num">6</span></td><td><span class="sale-status-pill">Sold</span></td><td>1688 Pine St #402</td><td>2 / 2</td><td>1,040</td><td>$941</td><td>$1,095,000</td><td>$1,050,000</td><td>$1,009.62</td><td>2025-12-12</td><td>60</td></tr>
+              <tr class="sale-status-sold"><td><span class="sale-comp-num">7</span></td><td><span class="sale-status-pill">Sold</span></td><td>1388 Gough St #1001</td><td>2 / 2</td><td>1,382</td><td>$2,041</td><td>$1,148,000</td><td>$1,050,000</td><td>$759.77</td><td>2025-12-23</td><td>200</td></tr>
+              <tr class="sale-status-sold"><td><span class="sale-comp-num">8</span></td><td><span class="sale-status-pill">Sold</span></td><td>1200 Gough St #10A</td><td>2 / 2</td><td>1,500</td><td>$1,592</td><td>$999,900</td><td>$980,000</td><td>$653.33</td><td>2025-12-09</td><td>114</td></tr>
+              <tr class="sale-status-sold"><td><span class="sale-comp-num">9</span></td><td><span class="sale-status-pill">Sold</span></td><td>1483 Sutter St #301</td><td>1 / 1</td><td>801</td><td>$941</td><td>$710,000</td><td>$690,000</td><td>$861.42</td><td>2025-12-08</td><td>113</td></tr>
+              <tr class="sale-status-sold"><td><span class="sale-comp-num">10</span></td><td><span class="sale-status-pill">Sold</span></td><td>1200 Gough St #14D</td><td>1 / 1</td><td>900</td><td>$1,094</td><td>$699,000</td><td>$683,500</td><td>$759.44</td><td>2025-12-22</td><td>68</td></tr>
+              <tr class="sale-status-sold"><td><span class="sale-comp-num">11</span></td><td><span class="sale-status-pill">Sold</span></td><td>601 Van Ness Ave #67</td><td>2 / 2</td><td>977</td><td>$1,550</td><td>$649,000</td><td>$625,000</td><td>$639.71</td><td>2026-01-29</td><td>129</td></tr>
+              <tr class="sale-status-sold"><td><span class="sale-comp-num">12</span></td><td><span class="sale-status-pill">Sold</span></td><td>1201 Sutter St PH605</td><td>1 / 1</td><td>—</td><td>$378</td><td>$555,000</td><td>$555,000</td><td>—</td><td>2026-01-09</td><td>86</td></tr>
+              <tr class="sale-status-sold"><td><span class="sale-comp-num">13</span></td><td><span class="sale-status-pill">Sold</span></td><td>601 Van Ness Ave #1102</td><td>1 / 1</td><td>676</td><td>$1,222</td><td>$498,000</td><td>$465,000</td><td>$687.87</td><td>2026-01-02</td><td>186</td></tr>
+              <tr class="sale-status-sold"><td><span class="sale-comp-num">14</span></td><td><span class="sale-status-pill">Sold</span></td><td>601 Van Ness Ave #750</td><td>1 / 1</td><td>666</td><td>$1,285</td><td>$479,000</td><td>$450,000</td><td>$675.68</td><td>2026-02-26</td><td>140</td></tr>
+              <tr class="sale-status-sold"><td><span class="sale-comp-num">15</span></td><td><span class="sale-status-pill">Sold</span></td><td>601 Van Ness Ave #812</td><td>1 / 1</td><td>708</td><td>$1,285</td><td>$499,900</td><td>$445,645</td><td>$629.44</td><td>2026-02-09</td><td>103</td></tr>
+              <tr class="sale-status-sold"><td><span class="sale-comp-num">16</span></td><td><span class="sale-status-pill">Sold</span></td><td>601 Van Ness Ave #1047</td><td>1 / 1</td><td>621</td><td>$1,103</td><td>$445,000</td><td>$435,000</td><td>$700.48</td><td>2025-12-01</td><td>102</td></tr>
+              <tr class="sale-status-sold"><td><span class="sale-comp-num">17</span></td><td><span class="sale-status-pill">Sold</span></td><td>1688 Pine St #101</td><td>2 / 2</td><td>886</td><td>$830</td><td>$335,512</td><td>$335,512</td><td>$378.68</td><td>2025-12-29</td><td>414</td></tr>
+              <tr class="sale-status-sold"><td><span class="sale-comp-num">18</span></td><td><span class="sale-status-pill">Sold</span></td><td>1238 Sutter St #303</td><td>1 / 1</td><td>420</td><td>$541</td><td>$329,000</td><td>$325,000</td><td>$773.81</td><td>2026-03-24</td><td>757</td></tr>
             </tbody>
           </table>
 
