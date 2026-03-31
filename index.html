@@ -541,9 +541,34 @@
       width: 160px;
       word-break: normal;
     }
-    #sale-comps td:nth-child(4),
-    #sale-comps td:nth-child(5) {
+    #sale-comps td:nth-child(4) {
       font-size: 11px;
+    }
+    .sale-note-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .sale-note-card {
+      background: #fffdf5;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+    }
+    .sale-note-card h4 {
+      margin: 0 0 8px;
+      font-size: 15px;
+    }
+    .sale-note-card p {
+      margin: 6px 0;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    @media (max-width: 900px) {
+      .sale-note-grid {
+        grid-template-columns: 1fr;
+      }
     }
     /* Spacing fix for zoning page */
     .zoning-takeaway {
@@ -1964,7 +1989,6 @@
                 <th>Status</th>
                 <th>Address</th>
                 <th>Class / Year</th>
-                <th>Cond. / BMR</th>
                 <th>Beds / Baths</th>
                 <th>SF</th>
                 <th>HOA</th>
@@ -1976,29 +2000,38 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="sale-status-active"><td><span class="sale-comp-num">1</span></td><td><span class="sale-status-pill">Active</span></td><td>1 Daniel Burnham Ct #816</td><td>Class B<br><span class="table-note">1987</span></td><td>Upgraded / move-in ready<br><span class="table-note">Private balcony, quartz counters, in-unit laundry, parking, storage • No BMR flag found in PDF</span></td><td>1 / 1</td><td>723</td><td>$1,306</td><td>$580,000</td><td>—</td><td>$802.21</td><td>—</td><td>240</td></tr>
-              <tr class="sale-status-active"><td><span class="sale-comp-num">2</span></td><td><span class="sale-status-pill">Active</span></td><td>1433 Bush St #405</td><td>Class B<br><span class="table-note">2019</span></td><td>Modern / move-in ready<br><span class="table-note">2019 building, floor-to-ceiling windows, European-style kitchen, in-unit W/D • No BMR flag found in PDF</span></td><td>0 / 1</td><td>383</td><td>$726</td><td>$498,800</td><td>—</td><td>$1,302.35</td><td>—</td><td>17</td></tr>
-              <tr class="sale-status-active"><td><span class="sale-comp-num">3</span></td><td><span class="sale-status-pill">Active</span></td><td>83 McAllister St #302</td><td>Class B<br><span class="table-note">1907 / renovated 2006</span></td><td>Historic remodel / investor-oriented<br><span class="table-note">Historic building remodeled in 2007, rooftop deck, gym, lounge • Renting permitted • No BMR flag found in PDF</span></td><td>0 / 1</td><td>255</td><td>$530</td><td>$288,000</td><td>—</td><td>$1,129.41</td><td>—</td><td>5</td></tr>
-              <tr class="sale-status-contingent"><td><span class="sale-comp-num">4</span></td><td><span class="sale-status-pill">Contingent</span></td><td>1000 Franklin St #305<br><span class="table-note">Fixer upper condition</span></td><td>Unknown<br><span class="table-note">Year unknown</span></td><td>Fixer / inferior<br><span class="table-note">Listing explicitly says fixer-upper opportunity • No BMR flag found in PDF</span></td><td>2 / 2</td><td>1,054</td><td>$793</td><td>$659,000</td><td>—</td><td>$625.24</td><td>—</td><td>267</td></tr>
-              <tr class="sale-status-sold"><td><span class="sale-comp-num">5</span></td><td><span class="sale-status-pill">Sold</span></td><td>1 Daniel Burnham Ct #1610</td><td>Class B<br><span class="table-note">1987</span></td><td>Likely good / maintained<br><span class="table-note">No BMR flag found</span></td><td>3 / 2</td><td>1,598</td><td>$2,692</td><td>$1,198,000</td><td>$1,190,000</td><td>$744.68</td><td>2/27/26</td><td>103</td></tr>
-              <tr class="sale-status-sold"><td><span class="sale-comp-num">6</span></td><td><span class="sale-status-pill">Sold</span></td><td>1688 Pine St #402</td><td>Class A<br><span class="table-note">2016</span></td><td>Likely good / modern<br><span class="table-note">No BMR flag found</span></td><td>2 / 2</td><td>1,040</td><td>$941</td><td>$1,095,000</td><td>$1,050,000</td><td>$1,009.62</td><td>12/12/25</td><td>60</td></tr>
-              <tr class="sale-status-sold"><td><span class="sale-comp-num">7</span></td><td><span class="sale-status-pill">Sold</span></td><td>1388 Gough St #1001</td><td>Class B<br><span class="table-note">1993</span></td><td>Likely average to good<br><span class="table-note">No BMR flag found</span></td><td>2 / 2</td><td>1,382</td><td>$2,041</td><td>$1,148,000</td><td>$1,050,000</td><td>$759.77</td><td>12/23/25</td><td>200</td></tr>
-              <tr class="sale-status-sold"><td><span class="sale-comp-num">8</span></td><td><span class="sale-status-pill">Sold</span></td><td>1200 Gough St #10A</td><td>Class B<br><span class="table-note">1966</span></td><td>Likely average / older stock<br><span class="table-note">No BMR flag found</span></td><td>2 / 2</td><td>1,500</td><td>$1,592</td><td>$999,900</td><td>$980,000</td><td>$653.33</td><td>12/9/25</td><td>114</td></tr>
-              <tr class="sale-status-sold"><td><span class="sale-comp-num">9</span></td><td><span class="sale-status-pill">Sold</span></td><td>1483 Sutter St #301</td><td>Class B<br><span class="table-note">1993</span></td><td>Likely average to good<br><span class="table-note">No BMR flag found</span></td><td>1 / 1</td><td>801</td><td>$941</td><td>$710,000</td><td>$690,000</td><td>$861.42</td><td>12/8/25</td><td>113</td></tr>
-              <tr class="sale-status-sold"><td><span class="sale-comp-num">10</span></td><td><span class="sale-status-pill">Sold</span></td><td>1200 Gough St #14D</td><td>Class B<br><span class="table-note">1966</span></td><td>Likely average / older stock<br><span class="table-note">No BMR flag found</span></td><td>1 / 1</td><td>900</td><td>$1,094</td><td>$699,000</td><td>$683,500</td><td>$759.44</td><td>12/22/25</td><td>68</td></tr>
-              <tr class="sale-status-sold"><td><span class="sale-comp-num">11</span></td><td><span class="sale-status-pill">Sold</span></td><td>601 Van Ness Ave #67</td><td>Class B<br><span class="table-note">1981</span></td><td>Likely average / older high-rise<br><span class="table-note">No BMR flag found</span></td><td>2 / 2</td><td>977</td><td>$1,550</td><td>$649,000</td><td>$625,000</td><td>$639.71</td><td>1/29/26</td><td>129</td></tr>
-              <tr class="sale-status-sold"><td><span class="sale-comp-num">12</span></td><td><span class="sale-status-pill">Sold</span></td><td>1201 Sutter St PH605</td><td>Unknown<br><span class="table-note">2022</span></td><td>Likely newer / good<br><span class="table-note">No BMR flag found</span></td><td>1 / 1</td><td>—</td><td>$378</td><td>$555,000</td><td>$555,000</td><td>—</td><td>1/9/26</td><td>86</td></tr>
-              <tr class="sale-status-sold"><td><span class="sale-comp-num">13</span></td><td><span class="sale-status-pill">Sold</span></td><td>601 Van Ness Ave #1102</td><td>Class B<br><span class="table-note">1981</span></td><td>Likely average / older high-rise<br><span class="table-note">No BMR flag found</span></td><td>1 / 1</td><td>676</td><td>$1,222</td><td>$498,000</td><td>$465,000</td><td>$687.87</td><td>1/2/26</td><td>186</td></tr>
-              <tr class="sale-status-sold"><td><span class="sale-comp-num">14</span></td><td><span class="sale-status-pill">Sold</span></td><td>601 Van Ness Ave #750</td><td>Class B<br><span class="table-note">1981</span></td><td>Likely average / older high-rise<br><span class="table-note">No BMR flag found</span></td><td>1 / 1</td><td>666</td><td>$1,285</td><td>$479,000</td><td>$450,000</td><td>$675.68</td><td>2/26/26</td><td>140</td></tr>
-              <tr class="sale-status-sold"><td><span class="sale-comp-num">15</span></td><td><span class="sale-status-pill">Sold</span></td><td>601 Van Ness Ave #812</td><td>Class B<br><span class="table-note">1981</span></td><td>Likely average / older high-rise<br><span class="table-note">No BMR flag found</span></td><td>1 / 1</td><td>708</td><td>$1,285</td><td>$499,900</td><td>$445,645</td><td>$629.44</td><td>2/9/26</td><td>103</td></tr>
-              <tr class="sale-status-sold"><td><span class="sale-comp-num">16</span></td><td><span class="sale-status-pill">Sold</span></td><td>601 Van Ness Ave #1047</td><td>Class B<br><span class="table-note">1981</span></td><td>Likely average / older high-rise<br><span class="table-note">No BMR flag found</span></td><td>1 / 1</td><td>621</td><td>$1,103</td><td>$445,000</td><td>$435,000</td><td>$700.48</td><td>12/1/25</td><td>102</td></tr>
-              <tr class="sale-status-sold"><td><span class="sale-comp-num">17</span></td><td><span class="sale-status-pill">Sold</span></td><td>1688 Pine St #101</td><td>Class A<br><span class="table-note">2016</span></td><td>Likely good / modern<br><span class="table-note">BMR</span></td><td>2 / 2</td><td>886</td><td>$830</td><td>$335,512</td><td>$335,512</td><td>$378.68</td><td>12/29/25</td><td>414</td></tr>
-              <tr class="sale-status-sold"><td><span class="sale-comp-num">18</span></td><td><span class="sale-status-pill">Sold</span></td><td>1238 Sutter St #303</td><td>Class B<br><span class="table-note">2018</span></td><td>Likely newer / good<br><span class="table-note">No BMR flag found</span></td><td>1 / 1</td><td>420</td><td>$541</td><td>$329,000</td><td>$325,000</td><td>$773.81</td><td>3/24/26</td><td>757</td></tr>
+              <tr class="sale-status-active"><td><span class="sale-comp-num">1</span></td><td><span class="sale-status-pill">Active</span></td><td>1 Daniel Burnham Ct #816</td><td>Class B<br><span class="table-note">1987</span></td><td>1 / 1</td><td>723</td><td>$1,306</td><td>$580,000</td><td>—</td><td>$802.21</td><td>—</td><td>240</td></tr>
+              <tr class="sale-status-active"><td><span class="sale-comp-num">2</span></td><td><span class="sale-status-pill">Active</span></td><td>1433 Bush St #405</td><td>Class B<br><span class="table-note">2019</span></td><td>0 / 1</td><td>383</td><td>$726</td><td>$498,800</td><td>—</td><td>$1,302.35</td><td>—</td><td>17</td></tr>
+              <tr class="sale-status-active"><td><span class="sale-comp-num">3</span></td><td><span class="sale-status-pill">Active</span></td><td>83 McAllister St #302</td><td>Class B<br><span class="table-note">1907 / renovated 2006</span></td><td>0 / 1</td><td>255</td><td>$530</td><td>$288,000</td><td>—</td><td>$1,129.41</td><td>—</td><td>5</td></tr>
+              <tr class="sale-status-contingent"><td><span class="sale-comp-num">4</span></td><td><span class="sale-status-pill">Contingent</span></td><td>1000 Franklin St #305<br><span class="table-note">Fixer upper condition</span></td><td>Unknown<br><span class="table-note">Year unknown</span></td><td>2 / 2</td><td>1,054</td><td>$793</td><td>$659,000</td><td>—</td><td>$625.24</td><td>—</td><td>267</td></tr>
+              <tr class="sale-status-sold"><td><span class="sale-comp-num">5</span></td><td><span class="sale-status-pill">Sold</span></td><td>1 Daniel Burnham Ct #1610</td><td>Class B<br><span class="table-note">1987</span></td><td>3 / 2</td><td>1,598</td><td>$2,692</td><td>$1,198,000</td><td>$1,190,000</td><td>$744.68</td><td>2/27/26</td><td>103</td></tr>
+              <tr class="sale-status-sold"><td><span class="sale-comp-num">6</span></td><td><span class="sale-status-pill">Sold</span></td><td>1688 Pine St #402</td><td>Class A<br><span class="table-note">2016</span></td><td>2 / 2</td><td>1,040</td><td>$941</td><td>$1,095,000</td><td>$1,050,000</td><td>$1,009.62</td><td>12/12/25</td><td>60</td></tr>
+              <tr class="sale-status-sold"><td><span class="sale-comp-num">7</span></td><td><span class="sale-status-pill">Sold</span></td><td>1388 Gough St #1001</td><td>Class B<br><span class="table-note">1993</span></td><td>2 / 2</td><td>1,382</td><td>$2,041</td><td>$1,148,000</td><td>$1,050,000</td><td>$759.77</td><td>12/23/25</td><td>200</td></tr>
+              <tr class="sale-status-sold"><td><span class="sale-comp-num">8</span></td><td><span class="sale-status-pill">Sold</span></td><td>1200 Gough St #10A</td><td>Class B<br><span class="table-note">1966</span></td><td>2 / 2</td><td>1,500</td><td>$1,592</td><td>$999,900</td><td>$980,000</td><td>$653.33</td><td>12/9/25</td><td>114</td></tr>
+              <tr class="sale-status-sold"><td><span class="sale-comp-num">9</span></td><td><span class="sale-status-pill">Sold</span></td><td>1483 Sutter St #301</td><td>Class B<br><span class="table-note">1993</span></td><td>1 / 1</td><td>801</td><td>$941</td><td>$710,000</td><td>$690,000</td><td>$861.42</td><td>12/8/25</td><td>113</td></tr>
+              <tr class="sale-status-sold"><td><span class="sale-comp-num">10</span></td><td><span class="sale-status-pill">Sold</span></td><td>1200 Gough St #14D</td><td>Class B<br><span class="table-note">1966</span></td><td>1 / 1</td><td>900</td><td>$1,094</td><td>$699,000</td><td>$683,500</td><td>$759.44</td><td>12/22/25</td><td>68</td></tr>
+              <tr class="sale-status-sold"><td><span class="sale-comp-num">11</span></td><td><span class="sale-status-pill">Sold</span></td><td>601 Van Ness Ave #67</td><td>Class B<br><span class="table-note">1981</span></td><td>2 / 2</td><td>977</td><td>$1,550</td><td>$649,000</td><td>$625,000</td><td>$639.71</td><td>1/29/26</td><td>129</td></tr>
+              <tr class="sale-status-sold"><td><span class="sale-comp-num">12</span></td><td><span class="sale-status-pill">Sold</span></td><td>1201 Sutter St PH605</td><td>Unknown<br><span class="table-note">2022</span></td><td>1 / 1</td><td>—</td><td>$378</td><td>$555,000</td><td>$555,000</td><td>—</td><td>1/9/26</td><td>86</td></tr>
+              <tr class="sale-status-sold"><td><span class="sale-comp-num">13</span></td><td><span class="sale-status-pill">Sold</span></td><td>601 Van Ness Ave #1102</td><td>Class B<br><span class="table-note">1981</span></td><td>1 / 1</td><td>676</td><td>$1,222</td><td>$498,000</td><td>$465,000</td><td>$687.87</td><td>1/2/26</td><td>186</td></tr>
+              <tr class="sale-status-sold"><td><span class="sale-comp-num">14</span></td><td><span class="sale-status-pill">Sold</span></td><td>601 Van Ness Ave #750</td><td>Class B<br><span class="table-note">1981</span></td><td>1 / 1</td><td>666</td><td>$1,285</td><td>$479,000</td><td>$450,000</td><td>$675.68</td><td>2/26/26</td><td>140</td></tr>
+              <tr class="sale-status-sold"><td><span class="sale-comp-num">15</span></td><td><span class="sale-status-pill">Sold</span></td><td>601 Van Ness Ave #812</td><td>Class B<br><span class="table-note">1981</span></td><td>1 / 1</td><td>708</td><td>$1,285</td><td>$499,900</td><td>$445,645</td><td>$629.44</td><td>2/9/26</td><td>103</td></tr>
+              <tr class="sale-status-sold"><td><span class="sale-comp-num">16</span></td><td><span class="sale-status-pill">Sold</span></td><td>601 Van Ness Ave #1047</td><td>Class B<br><span class="table-note">1981</span></td><td>1 / 1</td><td>621</td><td>$1,103</td><td>$445,000</td><td>$435,000</td><td>$700.48</td><td>12/1/25</td><td>102</td></tr>
+              <tr class="sale-status-sold"><td><span class="sale-comp-num">17</span></td><td><span class="sale-status-pill">Sold</span></td><td>1688 Pine St #101</td><td>Class A<br><span class="table-note">2016</span></td><td>2 / 2</td><td>886</td><td>$830</td><td>$335,512</td><td>$335,512</td><td>$378.68</td><td>12/29/25</td><td>414</td></tr>
+              <tr class="sale-status-sold"><td><span class="sale-comp-num">18</span></td><td><span class="sale-status-pill">Sold</span></td><td>1238 Sutter St #303</td><td>Class B<br><span class="table-note">2018</span></td><td>1 / 1</td><td>420</td><td>$541</td><td>$329,000</td><td>$325,000</td><td>$773.81</td><td>3/24/26</td><td>757</td></tr>
             </tbody>
           </table>
 
+          <h3>Property Notes</h3>
+          <div class="sale-note-grid">
+            <div class="sale-note-card"><h4><span class="sale-comp-num">1</span> 1 Daniel Burnham Ct #816</h4><p><strong>Condition:</strong> Upgraded / move-in ready.</p><p>Private balcony, quartz counters, in-unit laundry, parking, storage.</p></div>
+            <div class="sale-note-card"><h4><span class="sale-comp-num">2</span> 1433 Bush St #405</h4><p><strong>Condition:</strong> Modern / move-in ready.</p><p>2019 building, floor-to-ceiling windows, European-style kitchen, in-unit washer/dryer.</p></div>
+            <div class="sale-note-card"><h4><span class="sale-comp-num">3</span> 83 McAllister St #302</h4><p><strong>Condition:</strong> Historic remodel / investor-oriented.</p><p>Historic building remodeled in 2007, rooftop deck, gym, lounge, renting permitted.</p></div>
+            <div class="sale-note-card"><h4><span class="sale-comp-num">4</span> 1000 Franklin St #305</h4><p><strong>Condition:</strong> Fixer / inferior.</p><p>Listing explicitly describes it as a fixer-upper opportunity.</p></div>
+            <div class="sale-note-card"><h4><span class="sale-comp-num">17</span> 1688 Pine St #101</h4><p><strong>BMR:</strong> Yes.</p><p><strong>Condition:</strong> Likely good / modern.</p></div>
+          </div>
+
           <div class="fine-print">
-            <strong>Source:</strong> Sale comp data from MLS, pulled on March 30, 2026, showing listings in the Van Ness / Civic Center area since 12/1/2025. Additional condition notes were updated from the detailed MLS PDF provided for the currently visible listings in that export. BMR and condition notes remain preliminary and should be verified against the full MLS listing details, photos, disclosures, and final settlement statements during diligence. <a href="https://search.mlslistings.com/DE.asp?ID=DE-109833667262&L=1&eml=RGluZ3lpcm9uZ2R5ckBnbWFpbC5jb20=" target="_blank" rel="noopener">MLS listing link</a>.
+            <strong>Source:</strong> All data is from MLS. <a href="https://search.mlslistings.com/DE.asp?ID=DE-109833667262&L=1&eml=RGluZ3lpcm9uZ2R5ckBnbWFpbC5jb20=" target="_blank" rel="noopener">MLS listing link</a>.
           </div>
         </section>
 
