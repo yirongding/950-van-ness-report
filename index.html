@@ -487,23 +487,23 @@
     }
     .sale-comp-num {
       display: inline-flex;
-      width: 24px;
-      height: 24px;
+      width: 20px;
+      height: 20px;
       border-radius: 999px;
       align-items: center;
       justify-content: center;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       border: 1px solid currentColor;
       background: rgba(255,255,255,0.72);
     }
     .sale-status-pill {
       display: inline-block;
-      padding: 3px 8px;
+      padding: 3px 7px;
       border-radius: 999px;
       font-size: 10px;
       font-weight: 700;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.01em;
       background: rgba(255,255,255,0.7);
       border: 1px solid rgba(0,0,0,0.08);
       text-transform: uppercase;
@@ -518,6 +518,19 @@
       padding: 8px 6px;
       vertical-align: top;
       word-break: break-word;
+    }
+    #sale-comps th:nth-child(1),
+    #sale-comps td:nth-child(1) {
+      width: 34px;
+      max-width: 34px;
+      text-align: center;
+      padding-left: 4px;
+      padding-right: 4px;
+    }
+    #sale-comps th:nth-child(2),
+    #sale-comps td:nth-child(2) {
+      width: 74px;
+      min-width: 74px;
     }
     #sale-comps td:nth-child(3) {
       min-width: 140px;
