@@ -2234,7 +2234,7 @@
           <div class="figure"><div style="padding:24px; border:1px solid var(--line); border-radius:18px; background:#fff;"><h3 style="margin-top:0;">Land Value</h3><canvas id="taxChartLand" height="140"></canvas></div></div>
           <div class="figure"><div style="padding:24px; border:1px solid var(--line); border-radius:18px; background:#fff;"><h3 style="margin-top:0;">Improvement Value</h3><canvas id="taxChartImprovement" height="140"></canvas></div></div>
           <div class="figure"><div style="padding:24px; border:1px solid var(--line); border-radius:18px; background:#fff;"><h3 style="margin-top:0;">Net Assessed Value</h3><canvas id="taxChartNet" height="140"></canvas></div></div>
-          <div class="figure"><div style="padding:24px; border:1px solid var(--line); border-radius:18px; background:#fff;"><h3 style="margin-top:0;">Notable Jumps</h3><canvas id="taxChartJumps" height="120"></canvas></div></div>
+          <div class="figure"><div style="padding:24px; border:1px solid var(--line); border-radius:18px; background:#fff;"><h3 style="margin-top:0;">Assessment Change Timeline by Property</h3><div id="taxJumpTimeline"></div></div></div>
 
           <p class="source">Charts use available tax-assessment histories extracted from the seven CompRedux PDFs currently collected in the workspace. “Notable jumps” highlight years where the value pattern clearly breaks from a normal incremental trend.</p>
         </section>
@@ -2803,23 +2803,50 @@
         }
       });
     }
-    function makeNotableJumpsChart() {
-      const el=document.getElementById('taxChartJumps'); if (!el || !window.Chart) return;
-      const rows=[];
-      Object.entries(taxData.net).forEach(([name,series])=>{
-        const vals=taxYears.map(y=>series[y]??null);
-        for(let i=1;i<vals.length;i++){
-          if(vals[i-1]==null||vals[i]==null||vals[i-1]===0) continue;
-          const pct=((vals[i]-vals[i-1])/vals[i-1])*100;
-          if(Math.abs(pct)>50) rows.push({label:`${name} (${taxYears[i]})`, value: pct, color: propertyStyles[name].color});
-        }
+    function collectNotableJumps() {
+      const grouped = {};
+      ['land','improvement','net'].forEach(metricKey => {
+        Object.entries(taxData[metricKey]).forEach(([name,series]) => {
+          if (!grouped[name]) grouped[name] = [];
+          for (let i=1;i<taxYears.length;i++) {
+            const curr = series[taxYears[i]] ?? null;
+            const prev = series[taxYears[i-1]] ?? null;
+            if (curr == null || prev == null || prev === 0) continue;
+            const pct = ((curr - prev) / prev) * 100;
+            if (Math.abs(pct) > 50) {
+              grouped[name].push({ metricKey, year: taxYears[i], pct, prev, curr });
+            }
+          }
+        });
       });
-      new Chart(el,{type:'bar',data:{labels:rows.map(r=>r.label),datasets:[{label:'YoY change %',data:rows.map(r=>r.value),backgroundColor:rows.map(r=>r.color)}]},options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:(ctx)=>`${ctx.raw>=0?'+':''}${ctx.raw.toFixed(1)}%`}}},scales:{y:{ticks:{callback:v=>v+'%'}}}}});
+      return grouped;
+    }
+    function metricLabel(key) {
+      return key === 'land' ? 'Land' : key === 'improvement' ? 'Improvement' : 'Net Assessed';
+    }
+    function renderJumpTimeline() {
+      const el = document.getElementById('taxJumpTimeline'); if (!el) return;
+      const grouped = collectNotableJumps();
+      const items = Object.keys(grouped).map(name => {
+        const jumps = grouped[name].sort((a,b)=>taxYears.indexOf(a.year)-taxYears.indexOf(b.year));
+        const markers = jumps.length ? jumps.map(j => {
+          const left = 80 + (taxYears.indexOf(j.year) / (taxYears.length - 1)) * 760;
+          const title = `${name} | ${metricLabel(j.metricKey)} | ${j.year} | ${money(j.prev)} → ${money(j.curr)} | ${j.pct >= 0 ? '+' : ''}${j.pct.toFixed(1)}%`;
+          return `<div title="${title}" style="position:absolute; left:${left}px; top:8px; width:14px; height:14px; border-radius:50%; border:3px solid ${propertyStyles[name].color}; background:#fff;"></div><div style="position:absolute; left:${left-18}px; top:28px; font-size:10px; color:#666; white-space:nowrap;">${metricLabel(j.metricKey)}<br>${j.year}</div>`;
+        }).join('') : '<div style="position:absolute; left:90px; top:10px; font-size:12px; color:#888;">No major jump markers in available series</div>';
+        return `
+          <div style="margin:18px 0 28px 0;">
+            <div style="font-weight:700; margin-bottom:8px; color:${propertyStyles[name].color};">${name}</div>
+            <div style="position:relative; height:62px; border-top:2px solid #ddd; margin-left:80px; width:760px;">${markers}</div>
+          </div>`;
+      }).join('');
+      const axis = `<div style="margin-left:80px; width:760px; display:flex; justify-content:space-between; font-size:10px; color:#666; margin-top:-4px;">${taxYears.map(y=>`<span>${y}</span>`).join('')}</div>`;
+      el.innerHTML = items + axis + '<div class="fine-print" style="margin-top:12px;">Hover over a marker to see the property, metric, tax year, exact values, and year-over-year change.</div>';
     }
     makeTaxChart('taxChartLand','land','Land Value');
     makeTaxChart('taxChartImprovement','improvement','Improvement Value');
     makeTaxChart('taxChartNet','net','Net Assessed Value');
-    makeNotableJumpsChart();
+    renderJumpTimeline();
 
 
   </script>
