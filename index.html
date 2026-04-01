@@ -2231,12 +2231,34 @@
           <div class="lede"><strong>Interactive tax-assessed value history:</strong> hover over each point to see the exact tax year, value, and year-over-year change. Hollow points mark notable departures from an otherwise linear pattern and may reflect reassessment events, construction milestones, or changes in ownership.</div>
           <div class="fine-print"><strong>Properties shown:</strong> 100-108 Van Ness, 101 Polk, 150 Van Ness, 2525 Van Ness, and 830 Eddy. 819 Ellis is omitted because its current file does not include the same structured tax-assessment table.</div>
 
-          <div class="figure"><div style="padding:24px; border:1px solid var(--line); border-radius:18px; background:#fff;"><h3 style="margin-top:0;">Land Value</h3><canvas id="taxChartLand" height="140"></canvas></div></div>
-          <div class="figure"><div style="padding:24px; border:1px solid var(--line); border-radius:18px; background:#fff;"><h3 style="margin-top:0;">Improvement Value</h3><canvas id="taxChartImprovement" height="140"></canvas></div></div>
-          <div class="figure"><div style="padding:24px; border:1px solid var(--line); border-radius:18px; background:#fff;"><h3 style="margin-top:0;">Net Assessed Value</h3><canvas id="taxChartNet" height="140"></canvas></div></div>
-          <div class="figure"><div style="padding:24px; border:1px solid var(--line); border-radius:18px; background:#fff;"><h3 style="margin-top:0;">Notable Assessment Changes</h3><div id="taxJumpTable"></div></div></div>
+          <h3>Selected property snapshot</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Project</th>
+                <th>Previous Sale</th>
+                <th>Price / SF (based on prior building previous sale)</th>
+                <th>New Project Building SF</th>
+                <th>Lot (AC)</th>
+                <th>Units</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="status-completed"><td>1</td><td>100 Van Ness — Completed</td><td>Jan 2008: $58.38M</td><td>$156.92 (372,047 SF old building)</td><td>340,434 SF</td><td>0.46</td><td>418</td><td>Completed 2014</td></tr>
+              <tr class="status-completed"><td>2</td><td>150 Van Ness — Completed</td><td>Jan 2008: $35.27M</td><td>$235.50 (149,763 SF old building)</td><td>336,644 SF</td><td>0.90</td><td>420</td><td>Completed 2018</td></tr>
+              <tr class="status-completed"><td>3</td><td>101-103 Polk — Completed</td><td>Jan 2014: $7.2M</td><td>$494.40 (14,563 SF old building)</td><td>118,761 SF</td><td>0.30</td><td>162</td><td>Completed 2015</td></tr>
+              <tr class="status-completed"><td>8</td><td>830 Eddy St — Completed</td><td>2018: $7.5M land basis</td><td>Pre-dev basis used</td><td>130,000 SF</td><td>0.30</td><td>137</td><td>Completed 2021</td></tr>
+              <tr class="status-completed"><td>13</td><td>2525 Van Ness Ave — Completed</td><td>Jan 2020: $8.0M</td><td>$801.60 (9,980 SF old building)</td><td>51,695 SF</td><td>0.25</td><td>28</td><td>Completed 2024</td></tr>
+            </tbody>
+          </table>
 
-          <p class="source">Charts use available tax-assessment histories extracted from the seven CompRedux PDFs currently collected in the workspace. “Notable jumps” highlight years where the value pattern clearly breaks from a normal incremental trend.</p>
+          <div class="figure"><div style="padding:24px; border:1px solid var(--line); border-radius:18px; background:#fff;"><h3 style="margin-top:0;">Land Value</h3><p class="table-disclaimer">Key takeaway: land values tend to remain comparatively stable until a reassessment or redevelopment milestone creates a visible step change.</p><canvas id="taxChartLand" height="140"></canvas></div></div>
+          <div class="figure"><div style="padding:24px; border:1px solid var(--line); border-radius:18px; background:#fff;"><h3 style="margin-top:0;">Improvement Value</h3><p class="table-disclaimer">Key takeaway: improvement value most clearly captures when major building value is added to the site through new construction or redevelopment.</p><canvas id="taxChartImprovement" height="140"></canvas></div></div>
+          <div class="figure"><div style="padding:24px; border:1px solid var(--line); border-radius:18px; background:#fff;"><h3 style="margin-top:0;">Net Assessed Value</h3><p class="table-disclaimer">Key takeaway: net assessed value shows the combined land-plus-building effect, making redevelopment-driven value creation easiest to compare across projects.</p><canvas id="taxChartNet" height="140"></canvas></div></div>
+
+          <p class="source">Charts use available tax-assessment histories extracted from the seven CompRedux PDFs currently collected in the workspace.</p>
         </section>
 
         <section class="panel" id="rent-comps">
@@ -2820,46 +2842,9 @@
     function metricLabel(key) {
       return key === 'land' ? 'Land' : key === 'improvement' ? 'Improvement' : 'Net Assessed';
     }
-    function renderJumpTable() {
-      const el = document.getElementById('taxJumpTable'); if (!el) return;
-      const grouped = collectNotableJumps();
-      const rows = Object.keys(grouped).sort().map(name => {
-        const jumps = grouped[name].sort((a,b)=>Math.abs(b.pct)-Math.abs(a.pct));
-        const cells = jumps.length ? jumps.map(j => `
-          <tr>
-            <td>${name}</td>
-            <td>${metricLabel(j.metricKey)}</td>
-            <td>${j.year}</td>
-            <td>${money(j.prev)}</td>
-            <td>${money(j.curr)}</td>
-            <td>${j.pct >= 0 ? '+' : ''}${j.pct.toFixed(1)}%</td>
-          </tr>`).join('') : `
-          <tr>
-            <td>${name}</td>
-            <td colspan="5">No major jump markers in available series</td>
-          </tr>`;
-        return cells;
-      }).join('');
-      el.innerHTML = `
-        <table>
-          <thead>
-            <tr>
-              <th>Property</th>
-              <th>Metric</th>
-              <th>Tax Year</th>
-              <th>Previous Value</th>
-              <th>New Value</th>
-              <th>Change</th>
-            </tr>
-          </thead>
-          <tbody>${rows}</tbody>
-        </table>
-        <div class="fine-print" style="margin-top:12px;">These rows flag large departures from a normal incremental assessment pattern and may reflect reassessment, construction milestones, or ownership-related valuation changes.</div>`;
-    }
     makeTaxChart('taxChartLand','land','Land Value');
     makeTaxChart('taxChartImprovement','improvement','Improvement Value');
     makeTaxChart('taxChartNet','net','Net Assessed Value');
-    renderJumpTable();
 
 
   </script>
